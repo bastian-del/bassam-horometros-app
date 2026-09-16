@@ -14,7 +14,7 @@
     "start": "concurrently \"npm run react-start\" \"wait-on http://localhost:3000 && npm run electron-start\"",
     "build": "npm run react-build && npm run electron-build",
     "electron-build": "electron-builder",
-    "electron-dev": "concurrently \"BROWSER=none npm run react-start\" \"wait-on http://localhost:3000 && electron .\"",
+    "electron-dev": "concurrently \"cross-env BROWSER=none npm run react-start\" \"wait-on http://localhost:3000 && npm run electron-start\"",
     "dist": "npm run react-build && electron-builder --publish=never",
     "dist-win": "npm run react-build && electron-builder --win",
     "dist-mac": "npm run react-build && electron-builder --mac",
@@ -61,18 +61,23 @@
     }
   },
   "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
     "react-scripts": "5.0.1",
-    "jspdf": "^2.5.1",
+    "jspdf": "^4.2.1",
     "html2canvas": "^1.4.1",
-    "axios": "^1.6.0"
+    "axios": "^1.20.0"
   },
   "devDependencies": {
-    "electron": "^27.0.0",
-    "electron-builder": "^24.6.4",
-    "concurrently": "^8.2.1",
-    "wait-on": "^7.0.1"
+    "electron": "^44.4.1",
+    "electron-builder": "^26.15.3",
+    "concurrently": "^10.0.5",
+    "wait-on": "^9.1.0",
+    "cross-env": "^10.1.0"
+  },
+  "engines": {
+    "node": ">=22.12.0",
+    "npm": ">=10.9.0"
   },
   "eslintConfig": {
     "extends": [
